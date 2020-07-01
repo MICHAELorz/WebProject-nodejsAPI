@@ -29,6 +29,17 @@ app.get('/',(req,res)=>{
     res.render('control.ejs')
 })
 
+
+app.post('/insert',(req,res)=>{
+
+    console.log(req.body.areaForm)
+    console.log(req.body.City)
+    console.log(req.body.member)
+    
+});
+
+
+
 app.post('/area/control',(req,res)=>{
 
     

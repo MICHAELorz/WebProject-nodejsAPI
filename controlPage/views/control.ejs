@@ -7,7 +7,45 @@
     <script src="index.js"></script>
 </head>
 <body>
-    <h2>INSERT</h2>
+    <h2>新增一筆步道</h2>
+
+    <!-- 
+        資料表:
+        area
+        entrance
+        level
+        pave
+        trails
+        trailsimg
+    -->
+    <script>
+       area = new Array(); 
+       area[0]=["內湖","松山","信義"]
+       area[1]=["汐止","東湖"]
+       area[2]=["大安"]
+       
+       function renew(index){
+           for(var i =0;i<area[index].length;i++)
+            document.areaForm.member.options[i]=new Option(area[index][i],area[index][i])
+            document.areaForm.member.length=department[index].length
+       }
+    </script>
+    <form name="areaForm" action="/insert" method="POST">
+        <select size="5" onChange="renew(this.selectedIndex)" name="City">
+            <option value="台北市">台北市</option>
+            <option value="新北市">新北市</option>
+            <option value="基隆市">基隆市</option>       
+        </select>
+
+        <select size="5" name="member">
+            <option value="">請先選擇縣市</option>
+        </select>
+        <button type="submit" class="btn btn-danger">確認</button>
+    </form>
+
+
+    <h2>Insert</h2>
+
     <form action="/area/control" method="POST">
         <div>
             <label>area</label>
