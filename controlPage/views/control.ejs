@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <h2>INSERT</h2>
+    <form action="/area/control" method="POST">
+        <div>
+            <label>area</label>
+            <input type="text" name="Postal_code" placeholder="Postal_code">
+            <input type="text" name="City" placeholder="City">
+            <input type="text" name="Area" placeholder="Area">
+            <input type="text" name="Position" placeholder="Position">
+        </div>
+        <button type="submit" class="btn btn-danger">area insert</button>
+    </form>
+
+    <form action="/difficulty/control" method="POST">
+        <div>
+            <label>difficulty</label>
+            <input type="text" name="dif" placeholder="dif">
+        </div>
+        <button type="submit" class="btn btn-danger">difficulty insert</button>
+    </form>
+
+    <form action="/entrance/control" method="POST">
+        <div>
+            <label>entrance</label>
+            <input type="text" name="entrancePostal_code" placeholder="entrancePostal_code">
+            <input type="text" name="Entrance" placeholder="Entrance">
+            <input type="text" name="Traffic" placeholder="Traffic">
+        </div>
+        <button type="submit" class="btn btn-danger">entrance insert</button>
+    </form>
+    <form action="/entrance/control" method="POST">
+        <div>
+            <label>evaluatestore</label>
+            <input type="text" name="store_ID" placeholder="store_ID">
+            <input type="text" name="comment" placeholder="comment">
+            <input type="text" name="Evaluate" placeholder="Evaluate">
+        </div>
+        <button type="submit" class="btn btn-danger">evaluatestore insert</button>
+    </form>
+    <form action="/entrance/control" method="POST">
+        <div>
+            <label>evaluatetrails</label>
+            <input type="text" name="trailsID" placeholder="trailsID">
+            <input type="text" name="comment" placeholder="comment">
+            <input type="text" name="Evaluate" placeholder="Evaluate">
+        </div>
+        <button type="submit" class="btn btn-danger">envaluatetrails insert</button>
+    </form>
+
+    <form action="/level/control" method="POST">
+        <div>
+            <label>level</label>
+            <input type="text" name="dif_ID" placeholder="dif_ID">
+            <input type="text" name="dif_name" placeholder="dif_name">
+        </div>
+        <button type="submit" class="btn btn-danger">level insert</button>
+    </form>
+
+    <form action="/store/control" method="POST">
+        <div>
+            <label>store</label>
+            <input type="text" name="storeName" placeholder="storeName">
+            <input type="text" name="storePostal_code" placeholder="storePostal_code">
+            <input type="text" name="storeAddress" placeholder="storeAddress">
+            <input type="text" name="tellphone" placeholder="tellphone">
+            <input type="text" name="time" placeholder="time">
+            <input type="text" name="storeGuide" placeholder="storeGuide">
+            <input type="text" name="storeTraffic" placeholder="storeTraffic">
+        </div>
+        <button type="submit" class="btn btn-danger">store insert</button>
+    </form>
+
+    <form action="/trails/control" method="POST">
+        <div>
+            <label>trails</label>
+            <input type="text" name="trailsName" placeholder="trailsName">
+            <input type="text" name="trailsGuide" placeholder="trailsGuide">
+            <input type="text" name="Length" placeholder="Length">
+            <input type="text" name="Pave" placeholder="Pave">
+        </div>
+        <button type="submit" class="btn btn-danger">trails insert</button>
+    </form>
+
+    <form action="/trailsimg/control" method="POST">
+        <div>
+            <label>trailsimg</label>
+            <input type="text" name="trailsimgID" placeholder="trailsimgId">
+            <input type="text" name="trailsimg" placeholder="trailsimg">
+        </div>
+        <button type="submit" class="btn btn-danger">trailsimg insert</button>
+    </form>
+
+    <form action="/storeimg/control" method="POST">
+        <div>
+            <label>storeimg</label>
+            <input type="text" name="store_ID" placeholder="store_ID">
+            <input type="text" name="storeimg" placeholder="storeimg">
+        </div>
+        <button type="submit" class="btn btn-danger">storeimg insert</button>
+    </form>
+
+
+
+
+    <!--DELETE----------------------------------------------------------->
+
+    <h2>DELETE</h2>
+
+
+
+
+
+
+    <form action="/area/deleteControl" method="POST">
+        <div>
+            <label>area</label>
+            <input type="text" name="Postal_code" placeholder="Postal_code">
+        </div>
+        <button type="submit" class="btn btn-danger">area delete</button>
+    </form>
+
+    <form action="/difficulty/deleteControl" method="POST">
+        <div>
+            <label>difficulty</label>
+            <input type="text" name="name" placeholder="name">
+        </div>
+        <button type="submit" class="btn btn-danger">difficulty delete</button>
+    </form>
+
+    <form action="/entrance/deleteControl" method="POST">
+        <div>
+            <label>entrance</label>
+            <input type="text" name="entranceID" placeholder="entranceID">
+        </div>
+        <button type="submit" class="btn btn-danger">entrance delete</button>
+    </form>
+
+    <form action="/level/deleteControl" method="POST">
+        <div>
+            <label>level</label>
+            <input type="text" name="dif_ID" placeholder="dif_ID">
+        </div>
+        <button type="submit" class="btn btn-danger">level delete</button>
+    </form>
+
+    <form action="/store/deleteControl" method="POST">
+        <div>
+            <label>store</label>
+            <input type="text" name="store_ID" placeholder="store_ID">
+        </div>
+        <button type="submit" class="btn btn-danger">store delete</button>
+    </form>
+
+    <form action="/trails/deleteControl" method="POST">
+        <div>
+            <label>trails</label>
+            <input type="text" name="trailsID" placeholder="trailsID">
+        </div>
+        <button type="submit" class="btn btn-danger">trails delete</button>
+    </form>
+
+    <form action="/trailsimg/deleteControl" method="POST">
+        <div>
+            <label>trailsimg</label>
+            <input type="text" name="trailsImgID" placeholder="trailsImgId">
+        </div>
+        <button type="submit" class="btn btn-danger">trailsimg delete</button>
+    </form>
+
+    <form action="/storeimg/deleteControl" method="POST">
+        <div>
+            <label>storeimg</label>
+            <input type="text" name="store_ID" placeholder="store_ID">
+        </div>
+        <button type="submit" class="btn btn-danger">storeimg delete</button>
+    </form>
+
+
+</body>
+</html>
