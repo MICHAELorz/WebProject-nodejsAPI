@@ -2,6 +2,8 @@ const express = require('express');
 const mysql = require('mysql');
 const bodyparser = require('body-parser');
 const cors = require('cors');
+const path = require('path')
+
 
 const app = express();
 app.use(cors())
@@ -22,7 +24,8 @@ mysqlConnection.connect((err) => {
 });
 
 //input anything~~~~~~~~~~~~~~~~~~~~~~
-app.set('view-engine','ejs')
+app.set('view－engine','ejs')
+
 app.use(express.urlencoded({extended:false}))
 
 app.get('/',(req,res)=>{
@@ -30,12 +33,75 @@ app.get('/',(req,res)=>{
 })
 
 
-app.post('/insert',(req,res)=>{
+app.post('/insert/area',(req,res)=>{
 
-    console.log(req.body.areaForm)
-    console.log(req.body.City)
-    console.log(req.body.member)
     
+    var cityname = req.body.City
+    
+
+        mysqlConnection.query('insert into area(Postal_code,City,Area) values(?,?,?)',[req.body.postalcode,req.body.City,req.body.member],(err,response)=>{
+                if(!err)
+                    {
+                        console.log(cityname)
+                        res.render("control",{cityname});
+                    }
+                else
+                    {
+                        throw err;
+                    }
+            
+        });
+    
+    
+    
+    
+});
+
+
+
+
+app.post('/insert/trails,',(req,res)=>{
+    mysqlConnection.query('insert into trails(trailsName,trailsGuide,Length,dif) value(?,?,?,?)',[req.body.trailsName,req.body.trailsGuide,req.body.Length,req.body.dif],(err,response)=>{
+
+        if(!err)
+        {
+            res.send('area record has been inserted seccessfully! nex step!');
+        }
+        else
+        {
+            throw err;
+        }
+    })
+})
+
+
+app.post('/insert/pave',(req,res)=>{
+    mysqlConnection.query('insert into pave(paveID) values(?)',[req.body.paveID],(err,response)=>{
+        if(!err)
+        {
+            res.send('area record has been inserted seccessfully! next step!'); 
+        }
+        else
+        {
+            throw err;
+        }
+    })
+})
+
+
+app.post('/insert/entrance',(req,res)=>{
+
+
+    mysqlConnection.query('insert into entrance(entrancePostal_code) values(?)',[req.body.entrancePostal_code],(err,response)=>{
+        if(!err)
+        {
+            res.send('area record has been inserted seccessfully! next step!'); 
+        }
+        else
+        {
+            throw err;
+        }
+    });
 });
 
 
