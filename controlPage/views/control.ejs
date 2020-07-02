@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <h2>新增一筆步道</h2>
+
+    <!-- 
+        資料表:
+        area
+        entrance
+        level
+        pave
+        trails
+        trailsimg
+    -->
+    <script>
+       area = new Array(); 
+       area[0]=["內湖","松山","信義"]
+       area[1]=["汐止","東湖"]
+       area[2]=["大安"]
+       
+       function renew(index){
+           for(var i =0;i<area[index].length;i++)
+            document.areaForm.member.options[i]=new Option(area[index][i],area[index][i])
+            document.areaForm.member.length=department[index].length
+       }
+    </script>
+    <h3>area</h3>
+    <form name="areaForm" action="/insert/area" method="POST">
+        <select size="5" onChange="renew(this.selectedIndex)" name="City">
+            <option value="台北市">台北市</option>
+            <option value="新北市">新北市</option>
+            <option value="基隆市">基隆市</option>       
+        </select>
+
+        <select size="5" name="member">
+            <option value="">請先選擇縣市</option>
+        </select></br>
+        <label>區域郵遞區號</label></br>
+    
+        <input type="text" name="postalcode"><br>
+    
+        <button type="submit" class="btn btn-danger">確認</button>
+    </form>
+    
+    
+
+    <h3>trails</h3>
+    <form action="/insert/trails" method="POST">
+        <input type="text" name="trailsName" placeholder="請輸入步道名稱"></br>
+        <input type="text" name="trailsGuide" placeholder="步道介紹"><br>
+        <input type="text" name="Length" placeholder="km"><br>
+        <label>難易度選擇</label><br>
+        <select name="dif">
+            <option value="1">1:一般大眾</option>
+            <option value="2">2:體力較佳者</option>
+            <option value="3">3:初級登山者</option>
+            <option value="4">4:體力佳且具野外求生能力者</option>
+            <option value="5">4:已受訓登山者</option>
+        </select><br>
+        <button type="submit" class="btn btn-danger">確認</button>
+    </form>
+
+    <h3>Pave</h3>
+    <form action="/insert/pave" method="POST">
+
+        <select name="paveID">
+            <option value="1">石子路</option>
+            <option value="2">木棧道</option>
+            <option value="3">原始路徑</option>
+            <option value="4">泥土路</option>
+            
+        </select><br>
+        <button type="submit" class="btn btn-danger">確認</button>
+    </form>
+
+    <!-- 步道種類-->
+
+
+    <h3>entrance</h3>
+    <form action="/insert/entrance" method="POST">
+        <select name="trailsID">
+            <option value="步道ID">步道ID</option>
+        </select>
+
+        <label>郵遞區號</label>
+        <input type="text" name="entrancePostal_code" placeholder="同上郵遞區號"></br>
+        <label>入口</label>
+        <input type="text" name="Entrance" placeholder="入口"></br>
+        <label>交通方式</label>
+        <input type="text" name="Traffic" placeholder="交通方式">
+    </form>
+
+
+
+
+
+    <h2>Insert</h2>
+
+    <form action="/difficulty/control" method="POST">
+        <div>
+            <label>difficulty</label>
+            <input type="text" name="dif" placeholder="dif">
+        </div>
+        <button type="submit" class="btn btn-danger">difficulty insert</button>
+    </form>
+
+    <form action="/entrance/control" method="POST">
+        <div>
+            <label>entrance</label>
+            <input type="text" name="entrancePostal_code" placeholder="entrancePostal_code">
+            <input type="text" name="Entrance" placeholder="Entrance">
+            <input type="text" name="Traffic" placeholder="Traffic">
+        </div>
+        <button type="submit" class="btn btn-danger">entrance insert</button>
+    </form>
+ </body>   
+ </html>
