@@ -29,10 +29,11 @@ app.set('view engine','ejs')
 app.use(express.urlencoded({extended:false}))
 
 app.get('/',(req,res)=>{
-    res.render('control.ejs')
+    res.render('control')
 })
 
 //trails -> entrance -> pave -> level
+
 
 
 app.post('/search/area',(req,res)=>{
@@ -62,7 +63,7 @@ app.post('/insert/trails',(req,res)=>{
 
         if(!err)
         {
-            res.send('area record has been inserted seccessfully! next step!');
+            res.send('trails record has been inserted seccessfully! next step!<form action="/" method="get"><button type="submit" class="btn btn-danger">Next</form>');
         }
         else
         {
@@ -74,73 +75,135 @@ app.post('/insert/trails',(req,res)=>{
 app.post('/insert/entrance',(req,res)=>{
 
 
-    mysqlConnection.query('insert into entrance(entrancePostal_code) values(?)',[req.body.entrancePostal_code],(err,response)=>{
+    mysqlConnection.query(`SELECT AUTO_INCREMENT
+    FROM  INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_SCHEMA = 'projectdb'
+    AND   TABLE_NAME   = 'trails'`,[],(err,result)=>{
         if(!err)
         {
-            res.send('area record has been inserted seccessfully! next step!'); 
+         
+            console.log(result[0].AUTO_INCREMENT)
+            mysqlConnection.query('insert into entrance(trailsID,Postal_code,Entrance,Traffic) values(?,?,?,?)',[result[0].AUTO_INCREMENT-1,req.body.Postal_code,req.body.Entrance,req.body.Traffic],(err,response)=>{
+                if(!err)
+                {
+                    res.send('entrance record has been inserted seccessfully! next step!<form action="/" method="get"><button type="submit" class="btn btn-danger">Next</form>'); 
+                }
+                else
+                {
+                    throw err;
+                }
+            }); 
+
         }
         else
         {
             throw err;
         }
     });
+
+
+    
 });
-
-
 
 
 
 
 
 app.post('/insert/pave',(req,res)=>{
-    mysqlConnection.query('insert into pave(paveID) values(?)',[req.body.paveID],(err,response)=>{
+
+
+    mysqlConnection.query(`SELECT AUTO_INCREMENT
+    FROM  INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_SCHEMA = 'projectdb'
+    AND   TABLE_NAME   = 'trails'`,[],(err,result)=>{
         if(!err)
         {
-            res.send('area record has been inserted seccessfully! next step!'); 
+         
+            console.log(result[0].AUTO_INCREMENT)
+            mysqlConnection.query('insert into pave(trailsID,paveID) values(?,?)',[result[0].AUTO_INCREMENT-1,req.body.paveID],(err,response)=>{
+                if(!err)
+                {
+                    res.send('pave record has been inserted seccessfully! next step!<form action="/" method="get"><button type="submit" class="btn btn-danger">Next</form>'); 
+                }
+                else
+                {
+                    throw err;
+                }
+            })
+
         }
         else
         {
             throw err;
         }
-    })
+    });
+
+    
+});
+
+app.post('/insert/trailsimg',(req,res)=>{
+    mysqlConnection.query(`SELECT AUTO_INCREMENT
+    FROM  INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_SCHEMA = 'projectdb'
+    AND   TABLE_NAME   = 'trails'`,[],(err,result)=>{
+        if(!err)
+        {
+         
+            console.log(result[0].AUTO_INCREMENT)
+            mysqlConnection.query('insert into trailsimg(trailsID,trailsImg) values(?,?)',[result[0].AUTO_INCREMENT-1,req.body.trailsImg],(err,response)=>{
+                if(!err)
+                {
+                    res.send('trailsimg record has been inserted seccessfully! next step!<form action="/" method="get"><button type="submit" class="btn btn-danger">Next</form>'); 
+                }
+                else
+                {
+                    throw err;
+                }
+            })
+
+        }
+        else
+        {
+            throw err;
+        }
+    });
 })
 
 
+app.post('/insert/store',(req,res)=>{
+    mysqlConnection.query('insert into store(storeName,storePostal_code,storeAddress,tellphone,time,storeGuide,storeTraffic) values(?,?,?,?,?,?,?)',[req.body.storeName,req.body.storePostal_code,req.body.storeAddress,req.body.tellphone,req.body.time,req.body.storeGuide,req.body.storeTraffic],(err,response)=>{
+        res.send('store record is successful<form action="/" method="get"><button type="submit" class="btn btn-danger">Next</form>')
+    })
+})
 
-
-
-
-app.post('/area/control',(req,res)=>{
-
-    
-    mysqlConnection.query('insert into area(Postal_code,City,Area,Position) values(?,?,?,?)',[req.body.Postal_code,req.body.City,req.body.Area,req.body.Position],(err,response)=>{
+app.post('/insert/storeimg',(req,res)=>{
+    mysqlConnection.query(`SELECT AUTO_INCREMENT
+    FROM  INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_SCHEMA = 'projectdb'
+    AND   TABLE_NAME   = 'store'`,[],(err,result)=>{
         if(!err)
         {
-            res.send('area record has been inserted seccessfully!');
+         
+            console.log(result[0].AUTO_INCREMENT)
+            mysqlConnection.query('insert into storeimg(storeID,storeImg) values(?,?)',[result[0].AUTO_INCREMENT-1,req.body.storeImg],(err,response)=>{
+                if(!err)
+                {
+                    res.send('storeimg record has been inserted seccessfully! next step!<form action="/" method="get"><button type="submit" class="btn btn-danger">Next</form>'); 
+                }
+                else
+                {
+                    throw err;
+                }
+            })
+
         }
         else
         {
             throw err;
         }
     });
-    
-});
+})
 
-app.post('/difficulty/control',(req,res)=>{
-
-    
-    mysqlConnection.query('insert into difficulty(difficultyID,dif) values(?,?)',[req.body.difficultyID,req.body.dif],(err,response)=>{
-        if(!err)
-        {
-            res.send('difficulty record has been inserted seccessfully!'); 
-        }
-        else
-        {
-            throw err;
-        }
-    });
-    
-});
 
 
 app.listen(3001,()=>{

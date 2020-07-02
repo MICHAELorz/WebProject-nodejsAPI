@@ -7,7 +7,7 @@
     <script src="index.js"></script>
 </head>
 <body>
-    <h2>新增一筆步道</h2>
+    <h1>新增全新步道</h1>
 
     <!-- 
         資料表:
@@ -19,6 +19,7 @@
         trailsimg
     -->
     <script>
+       var allpostalcode 
        area = new Array(); 
        area[0]=["中正區","大同區","中山區","松山區","大安區","萬華區","信義區","士林區","北投區","大同區"]
        area[1]=["萬里區","金山區","板橋區","汐止區","深坑區","石碇區","瑞芳區","平溪區","雙溪區","貢寮區","新店區","坪林區","烏來區","永和區","中和區","土城區","三峽區","樹林區","鶯歌區","三重區","新莊區","泰山區","林口區","蘆洲區","五股區","八里區","淡水區","三芝區","石門區","汐止"]
@@ -56,7 +57,10 @@
     <% var cityname %> 
     <h1><%= cityname %></h1>
     <% var result %> 
+    <% if(result != null){ %> 
     <h1><%= result[0].Postal_code %></h1>
+    <%  }  %>
+
 
     <h3>trails</h3>
     <form action="/insert/trails" method="POST">
@@ -74,23 +78,26 @@
         <button type="submit" class="btn btn-danger">確認</button>
     </form>
 
+    
     <h3>entrance</h3>
     <form action="/insert/entrance" method="POST">
         <select name="trailsID">
             <option value="步道ID">步道ID</option>
-        </select>
-
+        </select><br>
         <label>郵遞區號</label>
-        <input type="text" name="entrancePostal_code" placeholder="同上郵遞區號"></br>
+        <input type="text" name="Postal_code" placeholder="同上郵遞區號"></br>
         <label>入口</label>
         <input type="text" name="Entrance" placeholder="入口"></br>
         <label>交通方式</label>
-        <input type="text" name="Traffic" placeholder="交通方式">
+        <input type="text" name="Traffic" placeholder="交通方式"><br>
+        <button type="submit" class="btn btn-danger">確認</button>
     </form>
 
     <h3>Pave</h3>
     <form action="/insert/pave" method="POST">
-
+        <select name="trailsID">
+            <option value="步道ID">步道ID</option>
+        </select><br>
         <select name="paveID">
             <option value="1">石子路</option>
             <option value="2">木棧道</option>
@@ -101,33 +108,41 @@
         <button type="submit" class="btn btn-danger">確認</button>
     </form>
 
+
+    <h3>trailsimg</h3>
+    <form action="/insert/trailsimg" method="POST">
+        
+        <input type="text" name="trailsImg" placeholder="步道/縣市/圖片檔案名稱.jpg">
+        <button type="submit" class="btn btn-danger">確認</button>
+    </form>
+
     <!-- 步道種類-->
     
 
-    
-
-
-
-
-
-    <h2>Insert</h2>
-
-    <form action="/difficulty/control" method="POST">
-        <div>
-            <label>difficulty</label>
-            <input type="text" name="dif" placeholder="dif">
-        </div>
-        <button type="submit" class="btn btn-danger">difficulty insert</button>
+    <h1>新增全新商店</h1>
+    <h3>store</h3>
+    <form action="/insert/store" method="POST">
+        <label>商店名稱:</label>
+        <input type="text" name="storeName" placeholder="商店名稱"><br>
+        <label>商店郵遞區號:</label>
+        <input type="text" name="storePostal_code" placeholder="商店郵遞區號"><br>
+        <label>商店地址:</label>
+        <input type="text" name="storeAddress" placeholder="商店地址"><br>
+        <LABEL>電話:</LABEL>
+        <input type="tel" name="tellphone" placeholder="電話"><br>
+        <label>營業時間:</label>
+        <input type="text" name="time" placeholder="營業時間"><br>
+        <label>商店介紹:</label>
+        <input type="text" name="storeGuide" placeholder="商店介紹"><br>
+        <label>交通方式:</label>
+        <input type="text" name="storeTraffic" placeholder="交通方式">
+        <button type="submit" class="btn btn-danger">確認</button>
     </form>
-
-    <form action="/entrance/control" method="POST">
-        <div>
-            <label>entrance</label>
-            <input type="text" name="entrancePostal_code" placeholder="entrancePostal_code">
-            <input type="text" name="Entrance" placeholder="Entrance">
-            <input type="text" name="Traffic" placeholder="Traffic">
-        </div>
-        <button type="submit" class="btn btn-danger">entrance insert</button>
+    <h3>storeimg</h3>
+    <form action="/insert/storeimg" method="POST">
+        <label>商店圖片:</label>
+        <input type="text" name="storeImg" placeholder="美食/縣市/圖片檔案名稱.jpg">
+        <button type="submit" class="btn btn-danger">確認</button>
     </form>
  </body>   
  </html>
