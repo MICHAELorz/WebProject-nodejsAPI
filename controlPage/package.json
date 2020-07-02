@@ -5,11 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<< HEAD:NodeJs/package.json
-    "watch": "nodemon"
-=======
     "start": "nodemon app.js "
->>>>>>> f94450c5e69d262da522482fc118952859fabd7c:controlPage/package.json
   },
   "author": "",
   "license": "ISC",
