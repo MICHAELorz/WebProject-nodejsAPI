@@ -111,3 +111,17 @@ app.listen(3000,()=>{
 
 
 
+
+
+    mysqlConnection.query('select * from employee',(err,rows,field)=>{
+        if(!err)
+        {
+           console.log(rows)
+
+        }
+        else
+        {
+            throw err;
+        }
+    });
+
